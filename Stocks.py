@@ -36,6 +36,9 @@ except:
 
 
 def compilePortfolioPattern():
+    """
+        Compiles the keywords in the WATCH_LIST dictionary
+    """
     global PORTFOLIO_KEYWORDS
     if len(WATCH_LIST):
         PORTFOLIO_KEYWORDS = re.compile(r"\b(%s)\b" % "|".join(WATCH_LIST.values()), re.IGNORECASE)
@@ -48,6 +51,10 @@ compilePortfolioPattern()
 
 
 def getKeyWord(mic, question, confirmation):
+    """
+        Asks user the supplied question, and then states the confimation question
+        Will run until the user confirms or cancels the keyword
+    """
     while True:
         word = mic.ask(question)
         if mic.checkForCancel():
@@ -65,6 +72,10 @@ def getKeyWord(mic, question, confirmation):
 
 
 def addToPortfolio(mic):
+    """
+        Used to add a key:symbol to the watchlist
+        upon success, writes the new pair to the watchlist.csv file
+    """
     def getSymbol():
         while True:
             symbol = mic.ask("What symbol would you like to add?")
@@ -81,22 +92,6 @@ def addToPortfolio(mic):
                 elif mic.checkForCancel():
                     return
                 mic.sayLesser("Could you say that again?")
-
-    # def getKeyWord():
-    #     while True:
-    #         word = mic.ask("What keyword would you like to associate this with?")
-    #         if mic.checkForCancel():
-    #             return
-    #         mic.sayLesser("Did you say " + word)
-    #         while True:
-    #             mic.activeListen()
-    #             if mic.checkForDeny():
-    #                 break;
-    #             elif mic.checkForConfirm():
-    #                 return word.upper()
-    #             elif mic.checkForCancel():
-    #                 return
-    #             mic.sayLesser("Could you say that again?")
 
     def add(newSymbol, keyword):
         try:
@@ -128,6 +123,10 @@ def addToPortfolio(mic):
 
 
 def removeFromPortfolio(mic):
+    """
+        Removes a symbol from the watchlist
+         upon success, rewrites the watchlist.csv file
+    """
     def removeFromMemory():
         for (key, value) in WATCH_LIST.iteritems():
             if key == keyword or value == keyword:
@@ -159,6 +158,10 @@ def removeFromPortfolio(mic):
 
 
 def getQuotesFromAPI(mic, keywords):
+    """
+        Retrieves quotes from the googlefinance api
+        using the mapped symbol from the provided keywords
+    """
     symbols = [key for (key, value) in WATCH_LIST.iteritems() if value in keywords]
     quotes = getQuotes(symbols)
     if len(quotes):
@@ -172,6 +175,9 @@ def getQuotesFromAPI(mic, keywords):
 
 
 def listPortfolio(mic):
+    """
+        Lists all the keywords that are stored in the watchlist
+    """
     mic.sayLesser("Your porfolio is comprised of ")
     mic.say(WATCH_LIST.values())
     return True
@@ -183,7 +189,7 @@ def handle(text, mic, profile=None):
     firstTimeHandling = True
     while True:
         if not text:
-            text=""
+            text = ""
         saidKeywords = PORTFOLIO_KEYWORDS.findall(text)
         if len(saidKeywords) > 0:
             # must convert unicode to string
