@@ -1,5 +1,6 @@
-# jasper-stocks
 **NOTE:** This branch is only compatiable with the jasper-dev branch!!!
+
+# jasper-stocks
 A module for [jasper-clent](https://github.com/jasperproject/jasper-client) used to retrieve information on stocks.
 
 ## Dependencies:
