@@ -1,0 +1,10 @@
+[Plugin]
+Name = stocks
+Version = 1.0.0
+License = MIT
+URL = https://github.com/dmbuchta/jasper-stocks
+Description = Get real time stock data from google finance
+
+[Author]
+Name = Dan Buchta
+URL = https://github.com/dmbuchta
