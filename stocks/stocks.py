@@ -31,10 +31,10 @@ def ask(mic, question, tries_until_break=3):
     while True:
         response = mic.ask(question)
         tries_until_break -= 1
-        if tries_until_break <= 0 or len(response):
+        if tries_until_break <= 0 or (len(response) >= 1 and len(response[0])):
             break
         question = "I couldn't get that"
-    if not len(response):
+    if not len(response) or not len(response[0]):
         return False
     if is_repeat(response) and last_thing_said:
         mic.say(last_thing_said)
