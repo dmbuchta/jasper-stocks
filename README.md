@@ -9,7 +9,7 @@ A module for [jasper-clent](https://github.com/jasperproject/jasper-client) used
 ## Installation
 ``` 
 git clone https://github.com/dmbuchta/jasper-stocks.git
-ln -s  <absolute path>/jasper-stocks/stocks ~/jasper/plugins/stocks
+cp jasper-stocks/stocks ~/jasper/plugins/speechhandler/stocks
 ```
 
 ## Using watchlist.csv
