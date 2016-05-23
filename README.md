@@ -12,7 +12,7 @@ git clone https://github.com/dmbuchta/jasper-stocks.git
 cp jasper-stocks/stocks ~/jasper/plugins/speechhandler/stocks
 ```
 
-## Using watchlist.csv
+## Using portfolio.csv
 Since STT engines will have trouble transcribing stock symbols and to avoid having to spell out a 
 symbol to jasper in order to get a stock quote, a csv file is used to map stock symbols to keywords. 
 Please take a look at the file before usage to understand how jasper will look up quotes.
