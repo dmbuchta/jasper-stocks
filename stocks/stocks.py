@@ -296,3 +296,6 @@ class StocksPlugin(plugin.SpeechHandlerPlugin):
         """
         return check_if_valid(self.get_phrases(), text) or bool(
             self.portfolio_regex.search(text))
+
+    def get_priority(self):
+        return 1

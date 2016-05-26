@@ -1,6 +1,5 @@
-# Jasper Weather Plugin
-# Copyright (C) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis
-# This file is distributed under the same license as the Jasper package.
+# Jasper Stocks Plugin
+# Copyright (C) 2016 Dan Buchta
 #
 #, fuzzy
 msgid ""
